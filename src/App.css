@@ -1,4 +1,10 @@
 .App {
   text-align: center;
+  padding: 24px;
+  background-color: rgb(220, 225, 230);
+  min-height: 100vh;
+  .wrap_hoverTable{
+    margin: 16px 0;
+  }
 }
 
