@@ -2,11 +2,14 @@
     position: relative;
     span {
         position: absolute;
+        top: -6px;
         left: -22px;
         z-index: 999;
         font-size: 12px;
-        color: white;
-        background-color: gray;
+        padding: 2px;
+        color: gray;
+        background-color: white;
+        box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
         border-radius: 50%;
         cursor: pointer;
     }
@@ -20,8 +23,13 @@
 .ant-table-thead:hover .ant-table-cell .hover_operate span {
   visibility: visible;
   position: absolute;
+  font-size: 12px;
+  padding: 2px;
   left: -7px;
   top: 40%;
   z-index: 9999;
+  background-color: white;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 50%;
   cursor: pointer; 
 }

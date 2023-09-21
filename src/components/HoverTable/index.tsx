@@ -2,9 +2,10 @@
 import { Table, Tooltip } from "antd";
 import { ExpandAltOutlined, RightOutlined } from "@ant-design/icons";
 import type { ColumnsType } from "antd/es/table";
-import React, { useState } from "react";
+import React, { useMemo, useRef, useState } from "react";
 
 import "./index.less";
+import DrawerInfo from "./components/DrawerInfo";
 
 interface DataType {
   key: React.Key;
@@ -36,6 +37,20 @@ const data: DataType[] = [
 
 const HoverTable: React.FC = () => {
   const [hoveredRow, setHoveredRow] = useState<number>(null as any);
+  const [drawerOpen, setDrawerOpen] = useState<boolean>(false);
+  const curRowInfo = useRef<any>([]);
+
+  // 行列扩展标志被点击
+  const handleExpandRow = (rowInfo: any[]) => {
+    console.log("%c Line:45 🥥 rowInfo", "color:#6ec1c2", rowInfo);
+    curRowInfo.current = rowInfo;
+    setDrawerOpen(true);
+  };
+
+  const DrawerTable = useMemo(
+    () => <DrawerInfo drawerShown={drawerOpen} setDrawerOpen={setDrawerOpen} />,
+    [drawerOpen]
+  );
   const columns: ColumnsType<DataType> = [
     {
       title: (
@@ -46,11 +61,14 @@ const HoverTable: React.FC = () => {
       width: 0,
       dataIndex: "action",
       key: "action",
-      render: (text, record, index) => {
+      render: (_, record, index) => {
         return (
           <div
             className={`custom-button ${hoveredRow === index ? "show" : ""}`}
             style={{ visibility: hoveredRow === index ? "visible" : "hidden" }}
+            onClick={() => {
+              handleExpandRow(record as any);
+            }}
           >
             <ExpandAltOutlined />
           </div>
@@ -124,16 +142,19 @@ const HoverTable: React.FC = () => {
     },
   ];
   return (
-    <Table
-      columns={columns}
-      dataSource={data}
-      onRow={(_, index) => {
-        return {
-          onMouseEnter: () => setHoveredRow(index as number),
-          onMouseLeave: () => setHoveredRow(null as any),
-        };
-      }}
-    />
+    <>
+      <Table
+        columns={columns}
+        dataSource={data}
+        onRow={(_, index) => {
+          return {
+            onMouseEnter: () => setHoveredRow(index as number),
+            onMouseLeave: () => setHoveredRow(null as any),
+          };
+        }}
+      />
+      {DrawerTable}
+    </>
   );
 };
 
