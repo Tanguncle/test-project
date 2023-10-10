@@ -1,0 +1,40 @@
+.guide_wrap {
+    position: fixed;
+    inset: 0;
+    z-Index: 1001;
+    pointer-Events: none;
+    .guide_svg {
+        width: 100%;
+        height: 100%;
+    }
+}
+.step_guide_content {
+    width: 456px;
+    .desc{
+        font-size: 14px;
+        margin-bottom: 16px;
+    }
+    .action{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            &>li {
+            width: 4px;
+            height: 4px;
+            margin-right: 4px;
+            border-radius: 50%; 
+            background-color: rgb(212, 210, 210);
+            }
+        }
+        .button_area {
+            Button {
+                margin-left: 8px;
+            }
+        }
+    }
+}

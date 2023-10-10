@@ -3,7 +3,7 @@ import "./index.less";
 
 interface Iprops {}
 const CardInfo: React.FC<Iprops> = (props) => {
-  const [data, setData] = useState([
+  const [data] = useState([
     "Data 1",
     "Data 2",
     "Data 3",
