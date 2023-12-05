@@ -7,6 +7,7 @@ import HoverTable from "./components/HoverTable";
 import "./App.css";
 import Guide from "./components/Guide";
 import CollapseTable from "./components/CollapseTable";
+import HoverBlcok from "./components/HoverBlcok";
 
 function App() {
   const button1 = useRef(null);
@@ -18,13 +19,13 @@ function App() {
         <Button type="primary">复制--把内容放进剪贴板</Button>
       </CopyToClipboard>
       <hr />
-      <div className="wrap_hoverTable" ref={button3}>
+      {/* <div className="wrap_hoverTable" ref={button3}>
         <HoverTable />
       </div>
       <hr />
       <Button ref={button1}>目标按钮</Button>
       <br />
-      <Button ref={button2}>目标按钮2</Button>
+      <Button ref={button2}>目标按钮2</Button> */}
       {/* <Guide
         steps={[
           {
@@ -45,7 +46,9 @@ function App() {
         ]}
         isClosed={false}
       /> */}
-      <CollapseTable />
+      {/* <CollapseTable /> */}
+      <hr />
+      <HoverBlcok />
     </div>
   );
 }

@@ -1,0 +1,31 @@
+.grid-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px; /* 设置网格项之间的间距 */
+    }
+
+.grid-item {
+      position: relative;
+      /* 为网格项添加样式，可以根据需要进行调整 */
+      background-color: #ddd;
+      text-align: center;
+      height: 100px;
+      width: 100%; /* 让每个网格项宽度平分容器宽度 */
+      .item {
+        height: 100%;
+         transition: all 0.3s ease-in-out; /* 添加过渡效果，使动画更平滑 */
+        --webkit-transition: all 0.3s ease-in; 
+      }
+
+      /* hover时的样式变化 */
+      &:hover {
+        .item {
+            position: absolute;
+            width: 100%;
+            z-index: 9999;
+            height:300px; /* 高度变为原来的1.5倍 */
+            background-color: red; /* 背景色变为红色 */
+            border: 1px solid green; /* 边框变为绿色 */
+        }
+      }
+    }
