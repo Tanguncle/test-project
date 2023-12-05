@@ -6,6 +6,7 @@ import HoverTable from "./components/HoverTable";
 
 import "./App.css";
 import Guide from "./components/Guide";
+import CollapseTable from "./components/CollapseTable";
 
 function App() {
   const button1 = useRef(null);
@@ -24,7 +25,7 @@ function App() {
       <Button ref={button1}>目标按钮</Button>
       <br />
       <Button ref={button2}>目标按钮2</Button>
-      <Guide
+      {/* <Guide
         steps={[
           {
             desc: "我是第一步",
@@ -43,7 +44,8 @@ function App() {
           },
         ]}
         isClosed={false}
-      />
+      /> */}
+      <CollapseTable />
     </div>
   );
 }
