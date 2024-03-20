@@ -1,13 +1,11 @@
 /* eslint-disable */
-import React, { useEffect, useRef } from "react";
 import { Button } from "antd";
+import { useRef } from "react";
 import { CopyToClipboard } from "./components/CopyToClipboard";
-import HoverTable from "./components/HoverTable";
+import { HistoryLine } from "./components/HistoryLine";
+import HoverBlcok from "./components/HoverBlcok";
 
 import "./App.css";
-import Guide from "./components/Guide";
-import CollapseTable from "./components/CollapseTable";
-import HoverBlcok from "./components/HoverBlcok";
 
 function App() {
   const button1 = useRef(null);
@@ -49,6 +47,8 @@ function App() {
       {/* <CollapseTable /> */}
       <hr />
       <HoverBlcok />
+      <hr />
+      <HistoryLine />
     </div>
   );
 }
