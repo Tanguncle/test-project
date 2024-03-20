@@ -1,0 +1,103 @@
+@border-color: #f3f1f1;
+.info-card-wrap {
+  text-align: left;
+
+  .sell-buget-card,
+  .sell-strategy-card,
+  .sell-project-card,
+  .sell-invest-card,
+  .sell-more-card {
+    height: 100%;
+  }
+
+  .sell-buget-card {
+    .ant-card-head-title {
+      flex: none;
+    }
+
+    .ant-card-extra {
+      flex: 1;
+
+      .sell-buget-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-left: 24px;
+      }
+    }
+
+    .sell-buget-content {
+      min-height: 300px;
+      padding: 24px;
+      border: 1px solid @border-color;
+      border-radius: 16px;
+      box-sizing: border-box;
+      display: flex;
+      .left {
+        width: 300px;
+        flex: none;
+        padding-right: 24px;
+        p {
+          text-align: center;
+          margin-bottom: 0;
+          font-size: 32px;
+          font-weight: 500;
+        }
+      }
+
+      .right {
+        flex: 1;
+        background-color: red;
+        padding-left: 24px;
+        border-left: 1px solid @border-color;
+      }
+    }
+  }
+
+  .sell-strategy-card {
+    height: 100%;
+  }
+
+  .sell-project-card {
+    .ant-card-head-title {
+      flex: none;
+    }
+
+    .ant-card-extra {
+      flex: 1;
+
+      .sell-project-header {
+        padding-left: 24px;
+      }
+    }
+  }
+  .sell-invest-card {
+    .ant-card-head-title {
+      flex: none;
+    }
+
+    .ant-card-extra {
+      flex: 1;
+
+      .sell-invest-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-left: 24px;
+      }
+    }
+  }
+  .sell-more-card {
+    .ant-card-head-title {
+      flex: none;
+    }
+
+    .ant-card-extra {
+      flex: 1;
+
+      .sell-more-header {
+        padding-left: 24px;
+      }
+    }
+  }
+}

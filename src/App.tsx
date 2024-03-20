@@ -6,6 +6,7 @@ import { HistoryLine } from "./components/HistoryLine";
 import HoverBlcok from "./components/HoverBlcok";
 
 import "./App.css";
+import { InfoCard } from "./components/InfoCard";
 
 function App() {
   const button1 = useRef(null);
@@ -49,6 +50,8 @@ function App() {
       <HoverBlcok />
       <hr />
       <HistoryLine />
+      <hr />
+      <InfoCard />
     </div>
   );
 }
