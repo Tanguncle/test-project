@@ -1,0 +1,54 @@
+.hover-container {
+  height: 120px;
+  display: flex;
+  justify-content: space-between;
+
+  .child-one {
+    width: 400px;
+    height: 100%;
+    min-height: 100%;
+    background-color: aqua;
+
+    &:hover {
+      background-color: cyan;
+    }
+  }
+
+  .child-four {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: white;
+  }
+
+  .child-inift {
+    width: 400px;
+    height: 100%;
+    background-color: #fa6323;
+  }
+  .test {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #fff;
+
+    &:hover {
+      cursor: not-allowed;
+      background-color: green;
+    }
+  }
+}
+
+.showHover {
+  &:hover {
+    position: relative;
+    background-color: pink;
+    cursor: pointer;
+    &::after {
+      content: "点击查看更多";
+      position: absolute;
+      left: var(--offset-left);
+      top: var(--offset-top);
+    }
+  }
+}
