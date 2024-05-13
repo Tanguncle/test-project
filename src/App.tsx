@@ -1,13 +1,8 @@
 /* eslint-disable */
-import { Button } from "antd";
 import { useRef } from "react";
-import { CopyToClipboard } from "./components/CopyToClipboard";
-import { HistoryLine } from "./components/HistoryLine";
-import HoverBlcok from "./components/HoverBlcok";
 
 import "./App.css";
-import HoverDiabled from "./components/HoverDiabled";
-import { InfoCard } from "./components/InfoCard";
+import StepDrawer from "./components/StepDrawer";
 
 function App() {
   const button1 = useRef(null);
@@ -15,10 +10,11 @@ function App() {
   const button3 = useRef(null);
   return (
     <div className="App">
-      <CopyToClipboard buildCopyData={() => "123"}>
+      <StepDrawer />
+      {/* <CopyToClipboard buildCopyData={() => "123"}>
         <Button type="primary">复制--把内容放进剪贴板</Button>
-      </CopyToClipboard>
-      <hr />
+      </CopyToClipboard> */}
+      {/* <hr /> */}
       {/* <div className="wrap_hoverTable" ref={button3}>
         <HoverTable />
       </div>
@@ -47,14 +43,14 @@ function App() {
         isClosed={false}
       /> */}
       {/* <CollapseTable /> */}
-      <hr />
-      <HoverBlcok />
-      <hr />
-      <HistoryLine />
-      <hr />
-      <InfoCard />
-      <hr />
-      <HoverDiabled />
+      {/* <hr /> */}
+      {/* <HoverBlcok /> */}
+      {/* <hr /> */}
+      {/* <HistoryLine /> */}
+      {/* <hr /> */}
+      {/* <InfoCard /> */}
+      {/* <hr /> */}
+      {/* <HoverDiabled /> */}
     </div>
   );
 }
