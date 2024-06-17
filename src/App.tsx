@@ -1,8 +1,9 @@
 /* eslint-disable */
 import { useRef } from "react";
+import RadarArea from "./components/RadarArea";
+import StepDrawer from "./components/StepDrawer";
 
 import "./App.css";
-import StepDrawer from "./components/StepDrawer";
 
 function App() {
   const button1 = useRef(null);
@@ -11,6 +12,7 @@ function App() {
   return (
     <div className="App">
       <StepDrawer />
+      <RadarArea />
       {/* <CopyToClipboard buildCopyData={() => "123"}>
         <Button type="primary">复制--把内容放进剪贴板</Button>
       </CopyToClipboard> */}
