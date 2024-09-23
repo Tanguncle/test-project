@@ -3,7 +3,7 @@ import { useRef } from "react";
 import StepDrawer from "./components/StepDrawer";
 
 import "./App.css";
-import OverallTrend from "./components/OverallTrend";
+import DrillTable from "./components/DrillTable";
 
 function App() {
   const button1 = useRef(null);
@@ -12,7 +12,8 @@ function App() {
   return (
     <div className="App">
       <StepDrawer />
-      <OverallTrend />
+      <DrillTable />
+      {/* <OverallTrend /> */}
       {/* <RadarArea /> */}
       {/* <CopyToClipboard buildCopyData={() => "123"}>
         <Button type="primary">复制--把内容放进剪贴板</Button>
