@@ -10,7 +10,7 @@ interface IProps {
 
 interface DataType {
   orgId: string;
-  parentorgId: string;
+  mileStoneId: string;
   orgName: string;
   notSendNum: number;
   projectAndMilestone: string;
@@ -23,42 +23,27 @@ interface DataType {
 
 const DrillTable: React.FC<IProps> = (props) => {
   console.log(props);
-  const data: DataType[] = mockData;
 
-  const getCurrentChildrenList = (parentorgId: string, list) => {
-    let childrenList = {} as DataType;
-    list.forEach((item) => {
-      if (item.orgId === parentorgId) {
-        childrenList = item;
-      } else if (item?.regimentMonitorDetailList?.length) {
-        childrenList = getCurrentChildrenList(
-          parentorgId,
-          item?.regimentMonitorDetailList
-        );
-      }
-    });
-    return childrenList;
-  };
-
-  const getCurRowSpan = (record: DataType, index: number) => {
-    const subChildren = getCurrentChildrenList(
-      record?.parentorgId,
-      data
-    )?.regimentMonitorDetailList;
-    const curItemOrgId = subChildren?.[index]?.orgId;
-    const matchItemsNum = subChildren?.filter(
-      (item) => (item.orgId = curItemOrgId)
+  const getRowSpan = (list: DataType[], curOrgId, index) => {
+    const matchItemLength = list.filter(
+      (item) => item.orgId === curOrgId
     )?.length;
-    const currentIndex = subChildren?.findIndex(
-      (item) => (item.orgId = curItemOrgId)
-    );
-    if (!record?.parentorgId || matchItemsNum === 1 || !record.orgId) return 1;
-    if (matchItemsNum > 1 && currentIndex < index && currentIndex !== -1) {
-      return matchItemsNum;
-    } else {
-      return 0;
-    }
+    const hasSameOrgIdBefore =
+      list.findIndex((item) => item.orgId === curOrgId) !== index;
+    return hasSameOrgIdBefore ? 0 : matchItemLength;
   };
+
+  const formateTableData = (data: DataType[]) => {
+    if (!data?.length) return null;
+    return data.map((item, index) => ({
+      ...item,
+      rowSpan: getRowSpan(data, item.orgId, index),
+      regimentMonitorDetailList: formateTableData(
+        item.regimentMonitorDetailList
+      ),
+    }));
+  };
+  const data: DataType[] = formateTableData(mockData);
 
   const columns: any = [
     {
@@ -66,20 +51,30 @@ const DrillTable: React.FC<IProps> = (props) => {
       dataIndex: "orgName",
       key: "orgName",
       onCell: (record, a, b) => {
-        console.log(
-          "%c Line:69 🥝 record",
-          "color:#465975",
-          data[a],
-          getCurRowSpan(record, a)
-        );
+        // console.log("%c Line:53 🍐 record", "color:#93c0a4", record);
         return {
           colSpan: 1,
-          rowSpan: getCurRowSpan(data[a], a),
+          rowSpan: record.rowSpan,
           className: record.regimentMonitorDetailList?.length
             ? "cell-expand-borderLess"
             : null,
         };
       },
+      // render: (text, record, index) => {
+      //   console.log(
+      //     "%c Line:64 🍣 text,record, index",
+      //     "color:#f5ce50",
+      //     text,
+      //     record,
+      //     index
+      //   );
+      //   return (
+      //     <span>
+      //       <Checkbox />
+      //       {text}
+      //     </span>
+      //   );
+      // },
     },
     {
       title: "项目/里程碑",
@@ -142,12 +137,22 @@ const DrillTable: React.FC<IProps> = (props) => {
 
   // rowSelection objects indicates the need for row selection
   const rowSelection: TableRowSelection<DataType> = {
+    columnWidth: 8,
     onChange: (selectedRowKeys, selectedRows) => {
       console.log(
         `selectedRowKeys: ${selectedRowKeys}`,
         "selectedRows: ",
         selectedRows
       );
+    },
+    renderCell: (checked, record, index, originNode) => {
+      return {
+        children: originNode,
+        props: {
+          className: "rowSelection-cell",
+          rowSpan: record.rowSpan,
+        },
+      };
     },
     onSelect: (record, selected, selectedRows) => {
       console.log(record, selected, selectedRows);
@@ -164,8 +169,8 @@ const DrillTable: React.FC<IProps> = (props) => {
         expandable={{
           childrenColumnName: "regimentMonitorDetailList",
         }}
+        rowKey="mileStoneId"
         // rowKey="orgId"
-        rowKey="chaheorgId"
         rowSelection={{
           ...rowSelection,
           hideSelectAll: true,
