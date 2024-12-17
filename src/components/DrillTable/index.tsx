@@ -19,6 +19,7 @@ interface DataType {
   totalRemindeNum: number;
   remindNum: number;
   regimentMonitorDetailList?: DataType[];
+  [x: string]: any;
 }
 
 const DrillTable: React.FC<IProps> = (props) => {
@@ -150,7 +151,7 @@ const DrillTable: React.FC<IProps> = (props) => {
         children: originNode,
         props: {
           className: "rowSelection-cell",
-          rowSpan: record.rowSpan,
+          rowSpan: record?.rowSpan,
         },
       };
     },

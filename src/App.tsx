@@ -1,9 +1,7 @@
 /* eslint-disable */
 import { useRef } from "react";
-import StepDrawer from "./components/StepDrawer";
 
 import "./App.css";
-import DrillTable from "./components/DrillTable";
 
 function App() {
   const button1 = useRef(null);
@@ -11,8 +9,9 @@ function App() {
   const button3 = useRef(null);
   return (
     <div className="App">
-      <StepDrawer />
-      <DrillTable />
+      123
+      {/* <StepDrawer />
+      <DrillTable /> */}
       {/* <OverallTrend /> */}
       {/* <RadarArea /> */}
       {/* <CopyToClipboard buildCopyData={() => "123"}>
