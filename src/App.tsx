@@ -1,10 +1,11 @@
 import React from "react";
-import MultiSelectTable from "./components/multiSelectTable";
+import FormDrawer from "./components/FormDrawer";
 
 const App: React.FC = () => {
   return (
     <div className="app">
-      <MultiSelectTable />
+      <FormDrawer />
+      {/* <MultiSelectTable /> */}
     </div>
   );
 };
